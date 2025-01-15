@@ -17,7 +17,7 @@ export class LinearInputControl implements ComponentFramework.StandardControl<II
     }
 
     public refreshData(evt: Event): void {
-        this._value = this.inputElement.value as any as number;
+        this._value = Number(this.inputElement.value) || 0;
         this.labelElement.innerHTML = this.inputElement.value;
         this._notifyOutputChanged();
     }
@@ -115,7 +115,6 @@ export class LinearInputControl implements ComponentFramework.StandardControl<II
     public destroy(): void {
         // Add code to cleanup control if necessary
         this.inputElement.removeEventListener("input", this._refreshData);
-        }
-     }
-    
+    }
+
 }
